@@ -2,7 +2,7 @@
  * Created by SugarTawng on 9/11/2022
  */
 
-const oUserCtrl = require('../controllers/userCtrl');
+    const oUserCtrl = require('../controllers/userCtrl');
 
 module.exports = function (app) {
     /**
@@ -86,7 +86,6 @@ module.exports = function (app) {
      *     }
      */
     app.post('/v1/login', oUserCtrl.login);
-
     /**
      * @api {GET} /v1/auth/users/:id Get One
      * @apiVersion 1.0.0

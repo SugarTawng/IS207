@@ -12,6 +12,8 @@ let App = Express();
 // get all data/stuff of the body (POST) parameters
 // parse application/json
 
+console.log(Config);
+
 App.use(cors());
 
 App.use(BodyParser.json({
@@ -47,7 +49,7 @@ App.all('/v1/auth/*', [require('./app/middlewares/validateRequest')]);
 // Route for API
 require('./app/routes')(App); // configure our routes
 
-mongoose.connect(Config.mongodb.uri, ()=>{
+    mongoose.connect(Config.mongodb.uri, ()=>{
     console.log('connected to DB');
 })
 
