@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home/Home";
+import Home from "./pages/home/Home";
 import ListOfBooks from "./pages/ListOfBooks/ListOfBooks";
 import DetailOfBook from "./pages/DetailOfBook/DetailOfBook";
 import SearchBook from "./pages/SearchBook/SearchBook";
@@ -10,10 +10,10 @@ import SignUp from "./components/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
 import Contact from "./pages/Contact/Contact";
 import Stats from "./pages/Stats/Stats";
-import NotFound from "./pages/NotFound/NotFound";
+import NotFound from "./pages/notfound/NotFound";
 import StoreContext from "./context/StoreContextProvider";
 import RequireAuth from "./utils/RequireAuth";
-import Layout from "./components/Layout/Layout";
+import Layout from "./components/layout/Layout";
 import TopQuantityOfEverybook from "./pages/TopQuantityOfEverybook/TopQuantityOfEverybook";
 import TopRatingOfFiveBooks from "./pages/TopRatingOfFiveBooks/TopRatingOfFiveBooks";
 
