@@ -46,6 +46,8 @@ const SignIn = () => {
         }
       );
 
+      console.log(accountResponse.data);
+
       setAuth(accountResponse.data);
 
       setIsAuthorized(true);
@@ -77,8 +79,8 @@ const SignIn = () => {
 
       navigate("/", { replace: true });
     } catch (err) {
-      setStatus("error");
-      setMsg("Login failed!");
+      setStatus("warning");
+      setMsg("Not admin role!");
     }
   };
 

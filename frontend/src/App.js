@@ -18,53 +18,68 @@ import TopQuantityOfEverybook from "./pages/TopQuantityOfEverybook/TopQuantityOf
 import TopRatingOfFiveBooks from "./pages/TopRatingOfFiveBooks/TopRatingOfFiveBooks";
 
 const ROLES = {
-	SUPER_ADMIN: "SUPER_ADMIN",
-	ADMIN: "ADMIN",
-	END_USER: "END_USER",
-	ANONYMOUS: "ANONYMOUS",
+  SUPER_ADMIN: "SUPER_ADMIN",
+  ADMIN: "ADMIN",
+  END_USER: "END_USER",
+  ANONYMOUS: "ANONYMOUS",
 };
 
 const App = () => {
-	window.onunload = () => {
-		localStorage.removeItem("account");
-	};
+  window.onunload = () => {
+    localStorage.removeItem("account");
+  };
 
-	return (
-		<>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route path="/" element={<Home />} />
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
 
-					<Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
 
-					<Route
-						element={<RequireAuth allowedRoles={[ROLES.ANONYMOUS, ROLES.END_USER, ROLES.ADMIN, ROLES.SUPER_ADMIN]} />}
-					>
-						<Route path="/books" element={<ListOfBooks />} />
+          <Route
+            element={
+              <RequireAuth
+                allowedRoles={[
+                  ROLES.ANONYMOUS,
+                  ROLES.END_USER,
+                  ROLES.ADMIN,
+                  ROLES.SUPER_ADMIN,
+                ]}
+              />
+            }
+          >
+            <Route path="/books" element={<ListOfBooks />} />
 
-						<Route path="/books/:id" element={<DetailOfBook />} />
+            <Route path="/books/:id" element={<DetailOfBook />} />
 
-						<Route path="/search" element={<SearchBook />} />
+            <Route path="/search" element={<SearchBook />} />
 
-						<Route path="/signin" element={<SignIn />} />
+            <Route path="/signin" element={<SignIn />} />
 
-						<Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<SignUp />} />
 
-						<Route path="/profile" element={<Profile />} />
-					</Route>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
 
-					<Route element={<RequireAuth allowedRoles={[ROLES.SUPER_ADMIN]} />}>
-						<Route path="/stats" element={<Stats />} />
-						<Route path="/topQuantityOfEverybook" element={<TopQuantityOfEverybook />} />
-						<Route path="/topRatingOfFiveBooks" element={<TopRatingOfFiveBooks />} />
-					</Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.SUPER_ADMIN]} />}>
+            <Route path="/stats" element={<Stats />} />
+            <Route
+              path="/topQuantityOfEverybook"
+              element={<TopQuantityOfEverybook />}
+            />
+            <Route
+              path="/topRatingOfFiveBooks"
+              element={<TopRatingOfFiveBooks />}
+            />
+          </Route>
 
-					<Route path="*" element={<NotFound />} />
-				</Route>
-			</Routes>
-		</>
-	);
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </>
+  );
 };
 
 export default App;
