@@ -151,14 +151,14 @@ exports.delete = function (accessUserId, accessUserRight, bookId, callback) {
     let options = { upsert: false, new: false, setDefaultsOnInsert: true };
 
     Book.findOneAndUpdate(query, update, options, function (error, book) {
-      book.status = update.status;
-      console.log(book.status);
+      // book.status = update.status;
+      // console.log(book.status);
       if (error) {
         return callback(8, "find_update_fail", 420, error);
       } else {
         if (book && book.status === Constant.STATUS_ENUM[2]) {
-          console.log(book.status);
-          console.log(book);
+          // console.log(book.status);
+          // console.log(book);
           book.remove(function (error) {
             if (error) {
               return callback(8, "remove_fail", 420, error);

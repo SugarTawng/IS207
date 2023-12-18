@@ -14,8 +14,15 @@ const SignIn = () => {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   const [isShowPassword, setIsShowPassword] = useState(false);
-  let { auth, setAuth, setIsAuthorized, setBooks, setStatus, setMsg } =
-    useContext(StoreContext);
+  let {
+    auth,
+    setAuth,
+    setIsAuthorized,
+    setBooks,
+    setUsers,
+    setStatus,
+    setMsg,
+  } = useContext(StoreContext);
   let SignIn = useRef();
   let navigate = useNavigate();
 
@@ -46,8 +53,6 @@ const SignIn = () => {
         }
       );
 
-      console.log(accountResponse.data);
-
       setAuth(accountResponse.data);
 
       setIsAuthorized(true);
@@ -71,6 +76,18 @@ const SignIn = () => {
 
       setBooks(booksResponse.data.data);
 
+      let usersResponse = await axios.get(
+        "http://localhost:3001/v1/auth/users/",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            access_token: JSON.parse(localStorage.getItem("account")).token,
+          },
+        }
+      );
+
+      setUsers(usersResponse.data.data);
+
       setUsername("");
 
       setPassword("");
@@ -81,6 +98,7 @@ const SignIn = () => {
     } catch (err) {
       setStatus("warning");
       setMsg("Not admin role!");
+      SignIn.current.classList.add("hide");
     }
   };
 
