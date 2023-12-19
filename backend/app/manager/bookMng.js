@@ -444,7 +444,13 @@ exports.parseFilter = function (
   }
 };
 
-exports.update = function (accessUserId, accessUserType, bookId, bookData) {
+exports.update = function (
+  accessUserId,
+  accessUserType,
+  bookId,
+  bookData,
+  callback
+) {
   try {
     let options = {
       upsert: false,
@@ -463,6 +469,7 @@ exports.update = function (accessUserId, accessUserType, bookId, bookData) {
     if (userRightIdx >= 0) {
       lowerUserRightList = Constant.USER_RIGHT_ENUM.slice(0, userRightIdx);
     }
+    query._id = bookId;
 
     let update = {};
 
@@ -500,25 +507,23 @@ exports.update = function (accessUserId, accessUserType, bookId, bookData) {
       update.authorName = bookData.authorName;
     }
 
-    if (
-      Validator.isNumeric(bookData.yearPublication) &&
-      bookData.yearPublication > 0 &&
-      Validator.isLength(bookData.yearPublication, { min: 1, max: 5 })
-    ) {
-      update.yearPublication = bookData.yearPublication;
-    } else {
-      update.yearPublication = -1;
-    }
+    // if (
+    //   Validator.isNumeric(bookData.yearPublication) &&
+    //   bookData.yearPublication > 0 &&
+    //   Validator.isLength(bookData.yearPublication, { min: 1, max: 5 })
+    // ) {
+    //   update.yearPublication = bookData.yearPublication;
+    // } else {
+    //   update.yearPublication = 0;
+    // }
 
     if (Pieces.VariableEnumChecking(bookData.status, Constant.STATUS_ENUM)) {
       update.status = bookData.status;
     }
 
-    if (
-      Pieces.VariableEnumChecking(bookData.userRight, Constant.USER_RIGHT_ENUM)
-    ) {
-      update.userRight = bookData.userRight;
-    }
+    update.quantity = bookData.quantity;
+
+    console.log("update quantity", update.quantity);
 
     Book.findOneAndUpdate(query, update, options, function (error, book) {
       if (error) {
@@ -531,7 +536,7 @@ exports.update = function (accessUserId, accessUserType, bookId, bookData) {
       }
     });
   } catch (error) {
-    return callback(2, "update_device_fail", 400, error);
+    console.log(error);
   }
 };
 

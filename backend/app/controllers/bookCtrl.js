@@ -120,14 +120,15 @@ module.exports = {
     const accessUserType = req.body.accessUserRight || "";
 
     let id = req.params.id || "";
-
+    let bookData = req.body;
     if (id === "deletes") {
       let idList = req.body.ids || "";
       BookManager.deletes(
         accessUserId,
         accessUserType,
         idList,
-        function (errorCode, errorMessage, httpCode, errorDescription) {
+        bookData,
+        function (errorCode, errorMessage, httpCode, errorDescription, result) {
           if (errorCode) {
             return Rest.sendError(
               res,
@@ -137,7 +138,7 @@ module.exports = {
               errorDescription
             );
           }
-          return Rest.sendSuccess(res, null, httpCode);
+          return Rest.sendSuccess(res, result, httpCode);
         }
       );
     } else {

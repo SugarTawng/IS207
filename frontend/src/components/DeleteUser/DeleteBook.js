@@ -72,17 +72,17 @@ const DeleteBook = () => {
                   {" "}
                   <tr>
                     <td colSpan={2}>
-                      <span>Book name:</span> <span>{user.bookName}</span>
+                      <span>Book name:</span> <span>{user.displayName}</span>
                     </td>
                   </tr>
                   <tr>
                     <td colSpan={2}>
-                      <span>Author name:</span> <span>{user.authorName}</span>
+                      <span>Author name:</span> <span>{user.userRight}</span>
                     </td>
                   </tr>
                   <tr>
                     <td colSpan={2}>
-                      <span>Category: </span> <span>{user.category}</span>
+                      <span>Category: </span> <span>{user.email}</span>
                     </td>
                   </tr>
                   <tr>

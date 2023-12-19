@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { RiEditBoxLine, RiDeleteBinLine } from "react-icons/ri";
 import StoreContext from "../../context/StoreContextProvider";
-import DeleteBook from "../../components/DeleteBook/DeleteBook";
+import DeleteBook from "../../components/DeleteUser/DeleteBook";
 import axios from "axios";
 import "./ListOfBooks.css";
 
@@ -86,7 +86,7 @@ const ListOfBooks = () => {
                   >
                     <td className="no">{index + 1}</td>
                     <td>
-                      <NavLink className="bookName" to={`/books/${book.id}`}>
+                      <NavLink className="bookName" to={`/users/${book.id}`}>
                         {book.displayName}
                       </NavLink>
                     </td>
@@ -103,7 +103,7 @@ const ListOfBooks = () => {
                     <td className="quantity">{book.email}</td>
                     {auth.userRight === "SUPER_ADMIN" ? (
                       <td className="modify">
-                        <NavLink to={`/books/${book.id}`}>
+                        <NavLink to={`/users/${book.id}`}>
                           <RiEditBoxLine className="edit" />
                         </NavLink>
                         /{" "}
