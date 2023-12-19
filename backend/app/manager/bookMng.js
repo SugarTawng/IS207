@@ -56,6 +56,11 @@ exports.create = function (
       );
     }
 
+    console.log(
+      "rightttt",
+      Constant.USER_RIGHT_MANAGER_ENUM.indexOf(accessUserRight)
+    );
+
     if (Constant.USER_RIGHT_MANAGER_ENUM.indexOf(accessUserRight) < 0) {
       return callback(
         8,

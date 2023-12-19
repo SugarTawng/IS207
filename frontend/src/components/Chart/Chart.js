@@ -25,7 +25,7 @@ const LineChart = () => {
           labels: quantities, // Sử dụng quantities thay vì ["January", "February", "March", "April", "May"]
           datasets: [
             {
-              label: "Monthly Sales",
+              label: "Change of number titles",
               data: counts, // Sử dụng counts thay vì [65, 59, 80, 81, 56]
               fill: false,
               borderColor: "rgba(75, 192, 192, 1)",

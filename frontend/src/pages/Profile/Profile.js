@@ -61,7 +61,12 @@ const Profile = () => {
         <button onClick={toggleEditProfile}>Edit</button>
       </div>
       <EditProfile />
-      <ListOfUsers />
+
+      {auth.userRight === "ADMIN" || auth.userRight === "SUPER_ADMIN" ? (
+        <ListOfUsers />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -18,14 +18,11 @@ const Stats = () => {
 
   let fetchData = async () => {
     try {
-      let response1 = await axios.get(
-        `https://userbookbackendapi.herokuapp.com/v1/auth/statistics/book/overall`,
-        {
-          headers: {
-            access_token: auth.token,
-          },
-        }
-      );
+      let response1 = await axios.get(`http://localhost:3001/v1/books/count`, {
+        headers: {
+          access_token: auth.token,
+        },
+      });
 
       setNumberOfTitles(response1.data);
 
@@ -66,23 +63,27 @@ const Stats = () => {
         <div className="NumberOfTitles">
           <h2>Number of titles</h2>
           <p>{numberOfTitles ? numberOfTitles : "No data found"}</p>
-        </div>
+        </div>{" "}
         <div className="TopQuantityOfEveryBook">
-          <h2>Top quantity of everybook</h2>
+          <h2>Number of user</h2>
+          <p>{4}</p>
+        </div>
+        {/* <div className="TopQuantityOfEveryBook">
+          <h2></h2>
           {topQuantityOfEverybook.length ? (
             <NavLink to="/topQuantityOfEverybook">See details</NavLink>
           ) : (
             "No data found"
           )}
-        </div>
-        <div className="TopRatingOfFiveBook">
+        </div> */}
+        {/* <div className="TopRatingOfFiveBook">
           <h2>Top rating of five books</h2>
           {topRatingOfFiveBooks.length ? (
             <NavLink to="/topRatingOfFiveBooks">See details</NavLink>
           ) : (
             "No data found"
           )}
-        </div>
+        </div> */}
       </div>
       <h1>Quantity Statistics</h1>
       <ChartComponent />

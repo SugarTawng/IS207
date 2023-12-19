@@ -85,6 +85,8 @@ const EditBook = ({ book }) => {
       yearPublication: publishingYear,
     };
 
+    console.log("new value", newValues);
+
     try {
       let response = await axios.put(
         `http://localhost:3001/v1/auth/books/${book.id}`,

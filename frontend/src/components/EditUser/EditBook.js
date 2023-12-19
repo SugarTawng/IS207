@@ -12,58 +12,23 @@ const EditBook = ({ book }) => {
   let [publishingYear, setPublishingYear] = useState(book.yearPublication);
   let [categories, setCategories] = useState([
     {
-      name: "Romance",
-      value: "romance",
+      name: "Super admin",
+      value: "SUPER_ADMIN",
       checked: true,
     },
     {
-      name: "Mystery",
-      value: "mystery",
+      name: "Admin",
+      value: "ADMIN",
       checked: true,
     },
     {
-      name: "Fantasy & Science fiction",
-      value: "fantasyScienceFiction",
+      name: "End user",
+      value: "END_USER",
       checked: true,
     },
     {
-      name: "Thrillers & Horror",
-      value: "thrillersHorror",
-      checked: true,
-    },
-    {
-      name: "Self-help",
-      value: "selfHelp",
-      checked: true,
-    },
-    {
-      name: "Short Stories",
-      value: "shortStories",
-      checked: true,
-    },
-    {
-      name: "Cookbooks",
-      value: "cookbooks",
-      checked: true,
-    },
-    {
-      name: "Essays",
-      value: "essays",
-      checked: true,
-    },
-    {
-      name: "History",
-      value: "history",
-      checked: true,
-    },
-    {
-      name: "Unknown",
-      value: "unknown",
-      checked: true,
-    },
-    {
-      name: "Other",
-      value: "other",
+      name: "Anonymous",
+      value: "ANONYMOUS",
       checked: true,
     },
   ]);
@@ -80,10 +45,12 @@ const EditBook = ({ book }) => {
       ...book,
       bookName: nameOfBook,
       authorName: author,
-      category,
+      userRight: category,
       quantity,
       yearPublication: publishingYear,
     };
+
+    console.log("new value", newValues);
 
     try {
       let response = await axios.put(
@@ -125,7 +92,7 @@ const EditBook = ({ book }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {/* <tr>
                 <td colSpan={2}>
                   <input
                     type="text"
@@ -138,8 +105,8 @@ const EditBook = ({ book }) => {
                     }}
                   />
                 </td>
-              </tr>
-              <tr>
+              </tr> */}
+              {/* <tr>
                 <td colSpan={2}>
                   <input
                     type="text"
@@ -152,7 +119,7 @@ const EditBook = ({ book }) => {
                     }}
                   />
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <td colSpan={2}>
                   <select
@@ -172,7 +139,7 @@ const EditBook = ({ book }) => {
                   </select>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td colSpan={2}>
                   <input
                     type="number"
@@ -186,8 +153,8 @@ const EditBook = ({ book }) => {
                     }}
                   />
                 </td>
-              </tr>
-              <tr>
+              </tr> */}
+              {/* <tr>
                 <td colSpan={2}>
                   <input
                     type="number"
@@ -201,7 +168,7 @@ const EditBook = ({ book }) => {
                     }}
                   />
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <td colSpan={2}>
                   <button>Submit</button>

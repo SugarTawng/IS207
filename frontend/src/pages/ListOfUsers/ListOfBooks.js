@@ -64,10 +64,10 @@ const ListOfBooks = () => {
         <thead>
           <tr>
             <th>No.</th>
-            <th>Name of book</th>
-            <th>Author</th>
+            <th>Name of user</th>
+            <th>Role</th>
             <th>Status</th>
-            <th>Quantity</th>
+            <th>email</th>
             {auth.userRight === "SUPER_ADMIN" ? <th>Edit / Delete</th> : ""}
           </tr>
         </thead>
@@ -75,6 +75,7 @@ const ListOfBooks = () => {
           {users ? (
             <>
               {users.map((book, index) => {
+                console.log("console.log", book.id);
                 return (
                   <tr
                     key={book.id}

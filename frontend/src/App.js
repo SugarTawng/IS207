@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/home/Home";
 import ListOfBooks from "./pages/ListOfBooks/ListOfBooks";
 import DetailOfBook from "./pages/DetailOfBook/DetailOfBook";
+import DetailOfUser from "./pages/DetailOfUsers/DetailOfUser";
 import SearchBook from "./pages/SearchBook/SearchBook";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/books" element={<ListOfBooks />} />
 
             <Route path="/books/:id" element={<DetailOfBook />} />
+            <Route path="/users/:id" element={<DetailOfUser />} />
 
             <Route path="/search" element={<SearchBook />} />
 

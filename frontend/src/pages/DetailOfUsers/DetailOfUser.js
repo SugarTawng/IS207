@@ -2,12 +2,12 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { RiEditBoxLine } from "react-icons/ri";
 import Spinner from "../../components/Spinner/Spinner";
-import EditBook from "../../components/EditBook/EditBook";
+import EditBook from "../../components/EditUser/EditBook";
 import StoreContext from "../../context/StoreContextProvider";
 import axios from "axios";
 import "./DetailOfBook.css";
 
-const DetailOfBook = () => {
+const DetailOfUser = () => {
   let { id } = useParams();
   let [book, setBook] = useState();
   let { auth } = useContext(StoreContext);
@@ -65,7 +65,7 @@ const DetailOfBook = () => {
 
   return (
     <div id="DetailOfBook">
-      <h1>Detail of book</h1>
+      <h1>Detail of user</h1>
       {book ? (
         <>
           <div className="book show-on-scroll top-to-bottom">
@@ -79,9 +79,9 @@ const DetailOfBook = () => {
             </div>
             <div className="body">
               <p>
-                <span>Author name:</span> <span>{book.authorName}</span>
+                <span>User name:</span> <span>{book.displayName}</span>
               </p>
-              <p>
+              {/* <p>
                 <span>Category: </span> <span>{book.category}</span>
               </p>
               <p>
@@ -96,7 +96,7 @@ const DetailOfBook = () => {
               </p>
               <p>
                 <span>Rating:</span> <span>{book.rating}</span>
-              </p>
+              </p> */}
               <p>
                 <span>Status:</span> <span>{book.status}</span>
               </p>
@@ -115,4 +115,4 @@ const DetailOfBook = () => {
   );
 };
 
-export default DetailOfBook;
+export default DetailOfUser;
